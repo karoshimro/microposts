@@ -13,6 +13,7 @@
 
 Route::get('/', 'MicropostsController@index');
 
+
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -27,6 +28,12 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('followings', 'UsersController@followings')->name('users.followings');
             Route::get('followers', 'UsersController@followers')->name('users.followers');
     });
+        Route::group(['prefix' => 'users/{id}'], function () {
+            Route::post('favorite', 'UserFavoriteController@store')->name('user.favorite');
+            Route::delete('unfavorite', 'UserFavoriteController@destroy')->name('user.unfavorite');
+            Route::get('favoriting', 'UsersController@favoritings')->name('users.favoritings');
+    });
 
     Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('favorite_b', 'UserFavoriteController', ['only' => ['store', 'destroy']]);
 });
