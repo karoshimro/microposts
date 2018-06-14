@@ -22,7 +22,8 @@
                                 <li>{!! link_to_route('users.show', 'My page', ['id' => Auth::id()]) !!}</li>
                                 <li role="separator" class="divider"></li>
                                 @if (Auth::user()->id == $user->id)
-                                    <li role="presentation" class="{{ Request::is('users/*/favorite') ? 'active' : '' }}"><a href="{{ route('users.favoritings', ['id' => $user->id]) }}">Favorites <span class="badge">{{ $count_favoritings }}</span></a></li>
+                                    <li role="presentation" class="{{ Request::is('users/*/favorite') ? 'active' : '' }}"><a href="{{ route('users.favoritings', ['id' => $user->id]) }}">Favorites <span class="badge"></span></a></li>
+                                    <li role="separator" class="divider"></li>
                                 @endif                                
                                 <li>{!! link_to_route('logout.get', 'Logout') !!}</li>
                             </ul>
