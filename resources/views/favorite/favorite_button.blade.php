@@ -7,3 +7,5 @@
             {!! Form::submit('Favorite', ['class' => "btn btn-warning btn-xs"]) !!}
         {!! Form::close() !!}
     @endif
+
+<!-- this is test by mia-->
